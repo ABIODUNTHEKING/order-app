@@ -3,36 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOGIN PAGE</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="sign_up.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
     <main>
         <section class="image">
             <img src="/img/logo.jpeg" alt="logo" class="logo mobile_logo">
-            <img src="/img/food.jpg" alt="FOOD" class="food">
+            <img src="/img/food_2.jpg" alt="FOOD" class="food">
         </section>
         <section class="userData">
             <div>
                 <div class="intro">
                     <img src="/img/logo.jpeg" alt="logo" class="logo">
                     <p class="heading">Welcome</p>
-                    <p class="sub-heading">Log in your account</p>
+                    <p class="sub-heading">Register your account</p>
                 </div>
                 <form action="/index.html">
                     <label for="email">Your Email</label>
-                    <input type="text" id="email" class="emal">
+                    <input type="text" id="email" class="email">
+                    <label for="phoneNumber">Your Phone Number</label>
+                    <input type="text" id="phoneNumber" class="phoneNumber">
                     <label for="password">Password</label>
                     <div class="password">
                         <input type="password" id="password">
                         <a href="#" class="eye-button"><i class="fa-regular fa-eye"></i></a>
                     </div>
-                    
+                    <label for="retryPassword">Confirm Your Password</label>
+                    <div class="retryPassword">
+                        <input type="password" id="retryPassword">
+                        <a href="#" class="eye-button"><i class="fa-regular fa-eye"></i></a>
+                    </div>
                     <input type="button" value="Login">
                 </form>
             </div>
-            <p class="account">Don't have an account? <a href="#">Sign Up</a></p>
+            <p class="account">Have an account? <a href="#">Sign In</a></p>
         </section>
     </main>
 </body>

@@ -58,7 +58,7 @@ main{
     width: 80px;
     display: block;
     margin: 0 auto;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border-radius: 10px;
 }
 
@@ -103,7 +103,8 @@ label{
     border: 0.5px solid rgba(0, 0, 0, 0.26);
     border-radius: 5px;
     align-items: center;
-    margin-top: 10px;
+    margin: 10px 0;
+
 }
 
 input[type="password"]{
@@ -131,24 +132,25 @@ input[type="button"]:hover{
     box-shadow: 2px 2px 4px 2px #5a6e74;
 }
 
-.no-account{
+.account{
     color: #5a6e74;
 }
 
-.no-account a{
+.account a{
     color: white;
     margin: 2px;
 }
 
 @media screen and (max-width: 1000px) {
     main{
-        height: 90%;
+        height: 100%;
         width: 100vw;
         display: flex;
         flex-direction: column;
         margin-top: 20px;
         width: 90%;
         padding: 10px 15px;
+        
     }
     .image{
         width: 100%;
@@ -157,10 +159,10 @@ input[type="button"]:hover{
     }
     .food{
         width: 100%;
-        height: 80%;
+        height: 65%;
     }
     .intro{
-        height: 15%;
+        height: 10%;
         margin-top: 20px;
         overflow: hidden;
         display: flex;
@@ -185,10 +187,19 @@ input[type="button"]:hover{
         display: flex;
         justify-content: center;
         align-items: center;
+
     }
     .userData form{
+        height: 70%;
+        overflow: scroll;
         width: 100%;
-        align-items: center
+        align-items: center;
+        margin-bottom: 0;
+        position: relative;
+    }
+
+    .userData form::-webkit-scrollbar{
+        display: none;
     }
     .logo{
         display: none;
@@ -196,10 +207,13 @@ input[type="button"]:hover{
     input{
         display: block;
         border: 2px solid rgba(0, 0, 0, 0.26);
-        padding: 15px;
+        padding: 10px;
     }
     .password{
         border: 2px solid rgba(0, 0, 0, 0.26);
+        padding: 0;
+        margin: 5px 0;
+
     }
     input[type="password"]{
         padding: 10px 0;
@@ -216,8 +230,9 @@ input[type="button"]:hover{
         width: 60px;
         margin: 10px auto;
     }
-    .no-account{
-        margin-top: 20px;
+    .account{
+        position: absolute;
+        bottom: -5px;
     }
-
+    
 }
