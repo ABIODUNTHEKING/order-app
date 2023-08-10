@@ -92,6 +92,7 @@ input{
     outline: 0;
     margin: 10px 0;
     background-color: #384d50;
+    color: white;
 
 }
 label{
@@ -107,7 +108,7 @@ label{
 
 }
 
-input[type="password"]{
+.passwordInput{
     width: 90%;
     border: 0;
     padding: 0;
@@ -121,14 +122,14 @@ input[type="password"]{
     color: white;
 }
 
-input[type="button"]{
+input[type="submit"]{
     background-color: #5a6e74;
     border: 1px solid white;
     box-shadow: 3px 3px 3px solid rgba(0,0,0,1);
     color: white;
 }
 
-input[type="button"]:hover{
+input[type="submit"]:hover{
     box-shadow: 2px 2px 4px 2px #5a6e74;
 }
 
@@ -218,12 +219,12 @@ input[type="button"]:hover{
         margin: 5px 0;
 
     }
-    input[type="password"]{
+    .passwordInput{
         padding: 10px 0;
         padding-left: 10px;
         
     }
-    input[type="button"]{
+    input[type="submit"]{
         margin-top: 20px;
         margin-bottom: 0;
     }
