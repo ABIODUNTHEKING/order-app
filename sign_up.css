@@ -134,11 +134,12 @@ input[type="button"]:hover{
 
 .account{
     color: #5a6e74;
+    margin: 2px;
 }
 
 .account a{
     color: white;
-    margin: 2px;
+    margin: 2px ;
 }
 
 @media screen and (max-width: 1000px) {
@@ -191,10 +192,10 @@ input[type="button"]:hover{
     }
     .userData form{
         height: 70%;
-        overflow: scroll;
         width: 100%;
         align-items: center;
         margin-bottom: 0;
+        overflow: scroll;
         position: relative;
     }
 
@@ -228,11 +229,9 @@ input[type="button"]:hover{
         display: block;
         height: 60px;
         width: 60px;
-        margin: 10px auto;
+        margin: 5px auto;
     }
     .account{
-        position: absolute;
-        bottom: -5px;
+        margin: 3px auto;
     }
-    
 }
