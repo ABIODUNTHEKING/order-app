@@ -109,6 +109,15 @@ input[type="button"]:hover{
     box-shadow: 2px 2px 4px 2px #5a6e74;
 }
 
+.no-account{
+    color: #5a6e74;
+}
+
+.no-account a{
+    color: white;
+    margin: 2px;
+}
+
 @media screen and (max-width: 1000px) {
     main{
         height: 90%;
@@ -176,6 +185,9 @@ input[type="button"]:hover{
         height: 60px;
         width: 60px;
         margin: 10px auto;
+    }
+    .no-account{
+        margin-top: 20px;
     }
 
 }
