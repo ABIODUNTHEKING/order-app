@@ -238,5 +238,6 @@ input[type="button"]:hover{
         align-items: center;
         justify-content: center;
         height: 10%;
+        margin-top: 10px;
     }
 }
