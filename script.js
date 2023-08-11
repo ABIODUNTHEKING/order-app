@@ -40,23 +40,26 @@ function validateInput(event){
 
     if(userEmail.trim() == ""){
         emailError.style.display = "block"
-        emailError.innerText = 'Enter in your email address'
-        
+        emailError.innerText = 'Enter in your email address'  
     }
     
     else if(!emailPattern.test(userEmail)){
         emailError.style.display = "block"
         emailError.innerText = 'Enter in a valid email address'
-        event.preventDefault()
     }
+
     else{
         emailError.style.display = "none"
     }
 
+
     if(userPhoneNo.trim() == ""){
         phoneError.style.display = "block"
         phoneError.innerText = "Enter in your phone number"
-        event.preventDefault()
+    }
+    else if(userPhoneNo.length > 15 || userPhoneNo.length < 10){
+        phoneError.style.display = "block"
+        phoneError.innerText = "Enter in a valid phone number"
     }
     else if(!numberPattern.test(userPhoneNo)){
         phoneError.style.display = "block"
@@ -66,6 +69,7 @@ function validateInput(event){
     else{
        phoneError.style.display = "none" 
     }
+
 
     if(userPassword.trim() == ""){
        passwordError.style.display = "block"
@@ -119,6 +123,7 @@ function registerUser(){
     let userEmail = document.getElementById('email').value
     let userPhoneNo = document.getElementById('phoneNumber').value
     let userPassword = document.getElementById('password').value
+    
 
     let newUserInfo = {
         userEmail,
@@ -150,10 +155,55 @@ function registerUser(){
             }
         })
     }
-    
-    
+}
 
+function login(event){
+    event.preventDefault()
+    let userEmail0rPhone = document.getElementById('email-or-phone').value
+    let userPassword = document.getElementById('password').value
+    let error = document.getElementById('error')
+    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/
+    const numberPattern = /^[0-9]+$/
     
+    usersDataBase = JSON.parse(localStorage.getItem('usersDataBase'))
+    console.log(usersDataBase)
+    usersDataBase.map(userInfo=>{
+        if(userEmail0rPhone.trim() == ""){
+            error.style.display = "block"
+            error.innerText = 'Enter in your email address or phone number'  
+            return
+        }
+
+        else if(userPassword.trim() == ""){
+            error.style.display = "block"
+            error.innerText = 'Enter in your password'  
+            return
+        }
+
+        else if(userEmail0rPhone == 'admin' && userPassword == 'admin'){
+            error.style.display = "none"
+            form.reset()
+            let currentUser = {
+                userEmail : 'admin',
+                userPassword : 'admin',
+                userPhoneNo : 'admin'
+            } 
+            localStorage.setItem('currentUser', JSON.stringify(currentUser))
+        }
+        
+        else if((userInfo.userPhoneNo == userEmail0rPhone || userInfo.userEmail == userEmail0rPhone) && userInfo.userPassword == userPassword){
+            error.style.display = "none"
+            form.reset()
+            localStorage.setItem('currentUser', JSON.stringify(userInfo))
+        }
+        
+        else{
+            error.innerText =  "Invalid email/phone number or password"
+            return
+            
+        }
+        
+    })
 }
 
 
