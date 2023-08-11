@@ -20,22 +20,37 @@
                     <p class="heading">Welcome</p>
                     <p class="sub-heading">Register your account</p>
                 </div>
-                <form action="/index.html">
-                    <label for="email">Your Email</label>
-                    <input type="text" id="email" class="email">
-                    <label for="phoneNumber">Your Phone Number</label>
+                <form id="form">
+                    <div>
+                        <label for="email">Your Email</label>
+                        <input type="text" id="email" class="email">
+                        <p class="error" id="emailError"></p>
+                    </div>
+
+                    <div>
+                        <label for="phoneNumber">Your Phone Number</label>
                     <input type="text" id="phoneNumber" class="phoneNumber">
-                    <label for="password">Password</label>
-                    <div class="password">
-                        <input type="password" id="password" class="passwordInput">
-                        <p href="#" class="eye-button" id="eye-button" onclick="viewPassword('password', 'eye-button')"><i class="fa-regular fa-eye"></i></p>
+                    <p class="error" id="phoneError"></p>
                     </div>
-                    <label for="retryPassword">Confirm Your Password</label>
-                    <div class="retryPassword">
-                        <input type="password" id="second-password" class="passwordInput">
-                        <p href="#" class="eye-button" id="seond-eye-button" onclick="viewPassword('second-password', 'seond-eye-button')"><i class="fa-regular fa-eye"></i></p>
+                    <div>
+                        <label for="password">Password</label>
+                        <div class="password">
+                            <input type="password" id="password" class="passwordInput">
+                            <p href="#" class="eye-button" id="eye-button" onclick="viewPassword('password', 'eye-button')"><i class="fa-regular fa-eye"></i></p>
+                        </div>
+                        <p class="error" id="passwordError"></p>
                     </div>
-                    <input type="submit" value="Register">
+                    
+                    <div>
+                        <label for="retryPassword">Confirm Your Password</label>
+                        <div class="retryPassword">
+                            <input type="password" id="second-password" class="passwordInput">
+                            <p href="#" class="eye-button" id="seond-eye-button" onclick="viewPassword('second-password', 'seond-eye-button')"><i class="fa-regular fa-eye"></i></p>
+                        </div>
+                        <p class="error" id="confirmError"></p>
+                    </div>
+                    
+                    <input type="submit" value="Register" onclick="validateInput(event)">
                 </form>
                 <p class="account">Have an account? <a href="/index.html">Sign In</a></p>
             </div>

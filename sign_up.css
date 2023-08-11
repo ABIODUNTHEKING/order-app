@@ -38,15 +38,16 @@ main{
     justify-items: center;
     align-items: center;
     padding: 30px 10px;
+    padding-top: 10px;
     height: 100%;
     width: 30rem;
-
 
 }
 
 .userData div{
     width: 25rem;
     padding: 0;
+    
 }
 
 .intro{
@@ -58,7 +59,7 @@ main{
     width: 80px;
     display: block;
     margin: 0 auto;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
     border-radius: 10px;
 }
 
@@ -70,7 +71,7 @@ main{
     color: white;
     font-size: 30px;
     font-weight: 300;
-    margin-bottom: 5px;
+    /* margin-bottom: 5px; */
 
 }
 
@@ -81,6 +82,13 @@ main{
 
 .userData form{
     display: block;
+}
+
+.error{
+    display: none;
+    font-size: 12px;
+    margin-top: -10px;
+    margin-bottom: 5px;
 }
 
 input{
@@ -104,7 +112,7 @@ label{
     border: 0.5px solid rgba(0, 0, 0, 0.26);
     border-radius: 5px;
     align-items: center;
-    margin: 10px 0;
+    margin: 6px 0;
 
 }
 
