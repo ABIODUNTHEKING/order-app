@@ -99,7 +99,7 @@ function validateInput(event){
        confirmError.innerText = "Confirm your password"
        
     }
-    else if(confirmUserPassword !== userPassword){
+    else if(confirmUserPassword.toLowerCase() !== userPassword.toLowerCase()){
         console.log('SMILE')
         confirmError.style.display = "block"
        confirmError.style.marginTop = "5px"
@@ -108,51 +108,54 @@ function validateInput(event){
     }
     else{
         confirmError.style.display = "none"
-        
-        
     }
 
      if(emailPattern.test(userEmail) && numberPattern.test(userPhoneNo) && userPassword.length >= 5 && confirmUserPassword == userPassword){
-        registerUser()
-        console.log('SMIle')
+        registerUser(event)
      }
 
 }
 
-function registerUser(){
+function registerUser(event){
+    event.preventDefault()
     let userEmail = document.getElementById('email').value
     let userPhoneNo = document.getElementById('phoneNumber').value
     let userPassword = document.getElementById('password').value
+    let error = document.getElementById('error')
     
 
     let newUserInfo = {
+        id: usersDataBase.length + 1,
         userEmail,
         userPhoneNo,
         userPassword
     }
-    console.log(usersDataBase)
+
     if(usersDataBase.length == 0){
         usersDataBase.push(newUserInfo)
         localStorage.setItem('usersDataBase', JSON.stringify(usersDataBase))
         form.reset()
     }
+
     else{
-        console.log(typeof usersDataBase)
-        
-        usersDataBase.map(userInfo=>{
+        usersDataBase.every(userInfo=>{
             if(userInfo.userEmail == userEmail){
-                alert("Email address already exists")
+                error.style.display = "block"
+                error.innerText = "Email address already exists"
                 return
             }
-            else if(userInfo.userPhoneNo == userPhoneNo){
-                alert("Phone Number already exists")
+            if(userInfo.userPhoneNo == userPhoneNo){
+                error.style.display = "block"
+                error.innerText = "Phone Number already exists"
                 return
-            }
-            else{
+            }t
+                console.log(userInfo)
                 usersDataBase.push(newUserInfo)
                 localStorage.setItem('usersDataBase', JSON.stringify(usersDataBase))
+                error.style.display = "none"
                 form.reset()
-            }
+                console.log("Number 2 place")
+            
         })
     }
 }
