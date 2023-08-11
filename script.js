@@ -130,13 +130,12 @@ function registerUser(event){
         userPhoneNo,
         userPassword
     }
-
+    
     if(usersDataBase.length == 0){
         usersDataBase.push(newUserInfo)
         localStorage.setItem('usersDataBase', JSON.stringify(usersDataBase))
         form.reset()
     }
-
     else{
         usersDataBase.every(userInfo=>{
             if(userInfo.userEmail == userEmail){
@@ -148,14 +147,14 @@ function registerUser(event){
                 error.style.display = "block"
                 error.innerText = "Phone Number already exists"
                 return
-            }t
+            }
+            else{
                 console.log(userInfo)
                 usersDataBase.push(newUserInfo)
                 localStorage.setItem('usersDataBase', JSON.stringify(usersDataBase))
                 error.style.display = "none"
                 form.reset()
-                console.log("Number 2 place")
-            
+            }
         })
     }
 }
