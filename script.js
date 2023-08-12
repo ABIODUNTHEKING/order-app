@@ -149,11 +149,11 @@ function registerUser(event){
                 return
             }
             else{
-                console.log(userInfo)
                 usersDataBase.push(newUserInfo)
                 localStorage.setItem('usersDataBase', JSON.stringify(usersDataBase))
                 error.style.display = "none"
                 form.reset()
+                window.location.assign("./dashboard.html")
             }
         })
     }
@@ -164,10 +164,22 @@ function login(event){
     let userEmail0rPhone = document.getElementById('email-or-phone').value
     let userPassword = document.getElementById('password').value
     let error = document.getElementById('error')
-    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/
-    const numberPattern = /^[0-9]+$/
     
-    usersDataBase = JSON.parse(localStorage.getItem('usersDataBase'))
+
+    if(userEmail0rPhone == 'admin' && userPassword == 'admin'){
+        error.style.display = "none"
+        form.reset()
+        let currentUser = {
+            userEmail : 'admin',
+            userPassword : 'admin',
+            userPhoneNo : 'admin'
+        } 
+        localStorage.setItem('currentUser', JSON.stringify(currentUser))
+        window.location.assign("./dashboard.html")
+    }
+
+
+    usersDataBase = JSON.parse(localStorage.getItem('usersDataBase')) || []
     console.log(usersDataBase)
     usersDataBase.map(userInfo=>{
         if(userEmail0rPhone.trim() == ""){
@@ -181,32 +193,53 @@ function login(event){
             error.innerText = 'Enter in your password'  
             return
         }
-
-        else if(userEmail0rPhone == 'admin' && userPassword == 'admin'){
-            error.style.display = "none"
-            form.reset()
-            let currentUser = {
-                userEmail : 'admin',
-                userPassword : 'admin',
-                userPhoneNo : 'admin'
-            } 
-            localStorage.setItem('currentUser', JSON.stringify(currentUser))
-        }
         
         else if((userInfo.userPhoneNo == userEmail0rPhone || userInfo.userEmail == userEmail0rPhone) && userInfo.userPassword == userPassword){
             error.style.display = "none"
             form.reset()
             localStorage.setItem('currentUser', JSON.stringify(userInfo))
+            window.location.assign("./dashboard.html")
         }
         
         else{
             error.innerText =  "Invalid email/phone number or password"
-            return
-            
+            return 
         }
         
     })
+    
 }
+
+let firstLink = document.getElementById('first-link')
+let secondLink = document.getElementById('second-link')
+let order = document.getElementById('order')
+let account = document.getElementById('account')
+let header = document.getElementById('header')
+let pageTitle = document.getElementById('page-title') 
+
+function displayOrder(){
+    secondLink.classList.add('first-link')
+    firstLink.classList.remove('first-link')
+    account.style.display = "none"
+    order.style.display = "block"
+    pageTitle.innerText = "ORDER"
+}
+
+function displayAccount(){
+    firstLink.classList.add('first-link')
+    secondLink.classList.remove('first-link')
+    order.style.display = "none"
+    account.style.display = "flex"
+    pageTitle.innerText = "ACCOUNT"
+}
+
+function hideDashBoard(){
+    header.classList.toggle('hidden')
+}
+
+
+
+
 
 
 

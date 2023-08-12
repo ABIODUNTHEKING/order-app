@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="widp=device-widp, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <header id="header">
+        <img src="/img/logo.jpeg" alt="logo" class="logo">
+        <nav>
+            <ul>
+                <li>
+                    <p class="nav-link first-link" id="first-link" onclick="displayAccount()"><i class="fa-solid fa-user"></i> Profile</p>
+                </li>
+                <li>
+                    <p class="nav-link" id="second-link" onclick="displayOrder()"><i class="fa-solid fa-cart-shopping"></i> Order</p>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="profile">
+            <div class="profileInfo">
+                <div class="display">
+                    <i class="fa-solid fa-bars bar" id="bar" onclick="hideDashBoard()"></i>
+                    <h2 id="page-title">ACCOUNT</h2>
+                </div>
+                <div class="userInfo">
+                    <ul>
+                        <li>
+                            <i class="fa-solid fa-cart-shopping cart"></i>
+                        </li>
+                        <li class="userImage">
+                            <img src="./img/no image.jpg" alt="profile" class="profileImg">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <section class="account" id="account">
+                <button>Edit Account</button>
+                <button>Delete Account</button>
+                <button>Get Account Info</button>
+            </section>
+
+            <section class="order" id="order">
+                <div class="controlButton">
+                    <button>Create Order</button>
+                    <button>Get Order</button>
+                    <button>Delete Order</button>
+                    <button>Edit Order</button>
+                </div>
+                <div class="listedOrder">
+                        <div class="orderTitle">
+                            <p>Product ID</p>
+                            <p>Product Name</p>
+                            <p>Product Price</p>
+                            <p>ETA</p>
+                            <p>User ID</p>
+                            <p>Product Status</p>
+                        </div>
+                </div>
+            </section>
+        </section>
+    </main>
+    <script src="./script.js"></script>
+</body>
+</html>

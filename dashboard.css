@@ -1,0 +1,180 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    height: 100vh;
+}
+
+header{
+    background-color: #384d50;
+    width: 20%;
+    padding: 30px;
+    border-radius: 0 25px 25px 0;
+}
+
+.logo{
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+header nav ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    list-style: none;
+    gap: 25px;
+}
+
+.nav-link{
+    color: white;
+    text-decoration: none;
+}
+
+.nav-link{
+    display: flex;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.first-link{
+    background-color: rgba(0, 0, 0, 0.37);
+}
+
+main{
+  padding: 30px;  
+  width: 100%;
+}
+.profileInfo{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.display{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+h2{
+    color: #384d50;
+}
+
+.bar{
+    font-size: 25px;
+    color: #384d50;
+    cursor: pointer;
+}
+
+.cart{
+    font-size: 20px;
+    color: #384d50;
+    cursor: pointer;
+}
+
+.profileImg{
+    width: 35px;
+    border-radius: 50%;
+    border: 0.5px solid rgba(0, 0, 0, 0.301);
+}
+
+.userInfo{
+    display: flex;
+}
+
+.userInfo ul{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.account{
+    display: flex;
+    height: 30vh;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+
+.account button, .controlButton button{
+    width: 30%;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #384d50;
+    background-color: white;
+    color: #384d50;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
+}
+
+.order{
+    display: none;
+}
+
+.controlButton{
+    display: flex;
+    height: 20vh;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+    padding: 10px;
+    
+}
+
+
+.controlButton button{
+    width: 20%;
+}
+
+.listedOrder{
+    color: #384d50;
+    height: 69vh;
+    border-radius: 30px;
+    padding: 20px;
+    overflow: scroll;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.listedOrder::-webkit-scrollbar{
+    display: none;
+}
+
+.orderTitle, .orderDetail{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.37);
+    height: 5vh;
+}
+
+.orderTitle p, .orderDetail p{
+    width: 20%;
+}
+
+.hidden{
+    display: none;
+}
+
+.reveal{
+    display: block;
+}
+
+
+
+
+
+
+
