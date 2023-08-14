@@ -5,6 +5,21 @@ let usersDataBase = JSON.parse(localStorage.getItem('usersDataBase')) || []
 let form = document.getElementById('form')
 
 
+window.addEventListener('load', ()=>{
+    currentPage = localStorage.getItem('account')
+    if(currentPage == "account"){
+        displayAccount()   
+    }
+    
+    else{
+        displayOrder()
+      
+    }
+}
+) 
+
+
+
 //FUNCTIONS
 function viewPassword(element1, element2){
     storedElement1 = element1
@@ -135,6 +150,7 @@ function registerUser(event){
         usersDataBase.push(newUserInfo)
         localStorage.setItem('usersDataBase', JSON.stringify(usersDataBase))
         form.reset()
+        window.location.assign("./dashboard.html")
     }
     else{
         usersDataBase.every(userInfo=>{
@@ -164,7 +180,7 @@ function login(event){
     let userEmail0rPhone = document.getElementById('email-or-phone').value
     let userPassword = document.getElementById('password').value
     let error = document.getElementById('error')
-    
+    usersDataBase = JSON.parse(localStorage.getItem('usersDataBase')) || []
 
     if(userEmail0rPhone == 'admin' && userPassword == 'admin'){
         error.style.display = "none"
@@ -178,9 +194,12 @@ function login(event){
         window.location.assign("./dashboard.html")
     }
 
+    else if(usersDataBase.length == 0){
+        error.style.display = "block"
+        error.innerText = "Email/Phone number do not exist"
+    }
 
-    usersDataBase = JSON.parse(localStorage.getItem('usersDataBase')) || []
-    console.log(usersDataBase)
+
     usersDataBase.map(userInfo=>{
         if(userEmail0rPhone.trim() == ""){
             error.style.display = "block"
@@ -194,7 +213,7 @@ function login(event){
             return
         }
         
-        else if((userInfo.userPhoneNo == userEmail0rPhone || userInfo.userEmail == userEmail0rPhone) && userInfo.userPassword == userPassword){
+        if((userInfo.userPhoneNo == userEmail0rPhone || userInfo.userEmail == userEmail0rPhone) && userInfo.userPassword == userPassword){
             error.style.display = "none"
             form.reset()
             localStorage.setItem('currentUser', JSON.stringify(userInfo))
@@ -202,6 +221,8 @@ function login(event){
         }
         
         else{
+            console.log(userInfo)
+            error.style.display = "block"
             error.innerText =  "Invalid email/phone number or password"
             return 
         }
@@ -210,6 +231,7 @@ function login(event){
     
 }
 
+
 let firstLink = document.getElementById('first-link')
 let secondLink = document.getElementById('second-link')
 let order = document.getElementById('order')
@@ -217,15 +239,21 @@ let account = document.getElementById('account')
 let header = document.getElementById('header')
 let pageTitle = document.getElementById('page-title') 
 
+
 function displayOrder(){
+    localStorage.getItem('currentPage')
+    localStorage.setItem('currentPage', 'order')
+    order.style.display = "grid"
+    account.style.display = "none"
     secondLink.classList.add('first-link')
     firstLink.classList.remove('first-link')
-    account.style.display = "none"
-    order.style.display = "block"
     pageTitle.innerText = "ORDER"
+    
 }
 
 function displayAccount(){
+    localStorage.getItem('currentPage')
+    localStorage.setItem('currentPage', 'account')
     firstLink.classList.add('first-link')
     secondLink.classList.remove('first-link')
     order.style.display = "none"
@@ -233,8 +261,14 @@ function displayAccount(){
     pageTitle.innerText = "ACCOUNT"
 }
 
+
+
 function hideDashBoard(){
     header.classList.toggle('hidden')
+}
+
+function pageReload(){
+    window.location.assign("./dashboard.html")
 }
 
 
