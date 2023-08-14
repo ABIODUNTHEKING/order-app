@@ -224,14 +224,14 @@ let header = document.getElementById('header')
 let pageTitle = document.getElementById('page-title') 
 
 
-function displayOrder(){
+function displayMenu(){
     localStorage.getItem('currentPage')
     localStorage.setItem('currentPage', 'order')
     order.style.display = "grid"
     account.style.display = "none"
     secondLink.classList.add('first-link')
     firstLink.classList.remove('first-link')
-    pageTitle.innerText = "ORDER"
+    pageTitle.innerText = "MENU"
     
 }
 
@@ -245,6 +245,35 @@ function displayAccount(){
     pageTitle.innerText = "ACCOUNT"
 }
 
+function hideDashBoard(){
+    header.classList.toggle('hidden')
+}
+
+function pageReload(){
+    window.location.assign("./dashboard.html")
+}
+
+
+let currentCount = 0
+
+function addOrder(){
+    let orderCount = document.getElementById('orderCount')
+    currentCount = JSON.parse(localStorage.getItem('currentCount'))
+    currentCount+=1
+    orderCount.innerText = currentCount
+    localStorage.setItem('currentCount', currentCount)
+}
+
+function displayOrder(){
+    let listedOrder = document.getElementById('listedOrder')
+    listedOrder.style.display = "block"
+}
+
+function hideOrder(){
+    let listedOrder = document.getElementById('listedOrder')
+    listedOrder.style.display = "none"
+}
+
 window.addEventListener('load', ()=>{
     currentPage = localStorage.getItem('currentPage')
     if(currentPage == "account"){
@@ -252,22 +281,32 @@ window.addEventListener('load', ()=>{
     }
     
     else{
-        displayOrder()
-        console.log('I THINK IT IS CORRECT')
+        displayMenu()
     }
+
+    currentCount = localStorage.getItem('currentCount')
+    let orderCount = document.getElementById('orderCount')
+    orderCount.innerText = currentCount
+
 }
 ) 
 
 
-function hideDashBoard(){
-    console.log('MD')
-    console.log(header)
-    header.classList.toggle('hidden')
-}
-
-function pageReload(){
-    window.location.assign("./dashboard.html")
-}
+// function displaySelectedOrder(){
+//      let listedOrder = document.getElementById('listedOrder')
+//      listedOrder.innerHTML += `<div class="selectedOrder">
+//                             <img src="${}" alt="food">
+//                             <div>
+//                             <p class="productName" id="productName">${}</p>
+//                             <p class="productPrice" id="productPrice">${}</p>
+//                             <div class="orderStatus">
+//                                 <i class="fa-solid fa-plus increaseOrder"></i>
+//                                 <span class="orderMade">1</span>
+//                                 <i class="fa-solid fa-minus decreaseOrder"></i>
+//                             </div>
+//                             </div>
+//                         </div>`
+// }
 
 
 
