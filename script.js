@@ -5,6 +5,7 @@ let usersDataBase = JSON.parse(localStorage.getItem('usersDataBase')) || []
 let form = document.getElementById('form')
 
 
+
 //FUNCTIONS
 function viewPassword(element1, element2){
     storedElement1 = element1
@@ -218,7 +219,7 @@ function login(event){
 
 let firstLink = document.getElementById('first-link')
 let secondLink = document.getElementById('second-link')
-let order = document.getElementById('order')
+let menu = document.getElementById('menu')
 let account = document.getElementById('account')
 let header = document.getElementById('header')
 let pageTitle = document.getElementById('page-title') 
@@ -226,13 +227,12 @@ let pageTitle = document.getElementById('page-title')
 
 function displayMenu(){
     localStorage.getItem('currentPage')
-    localStorage.setItem('currentPage', 'order')
-    order.style.display = "grid"
+    localStorage.setItem('currentPage', 'menu')
+    menu.style.display = "grid"
     account.style.display = "none"
     secondLink.classList.add('first-link')
     firstLink.classList.remove('first-link')
-    pageTitle.innerText = "MENU"
-    
+    pageTitle.innerText = "MENU" 
 }
 
 function displayAccount(){
@@ -240,7 +240,7 @@ function displayAccount(){
     localStorage.setItem('currentPage', 'account')
     firstLink.classList.add('first-link')
     secondLink.classList.remove('first-link')
-    order.style.display = "none"
+    menu.style.display = "none"
     account.style.display = "flex"
     pageTitle.innerText = "ACCOUNT"
 }
@@ -254,24 +254,106 @@ function pageReload(){
 }
 
 
-let currentCount = 0
+let availableFoods = [
+    {
+        productName : 'Stake',
+        productImage : './img/food.jpg',
+        productPrice : 30000
+    },
+    {
+        productName : 'Vegetable Salad',
+        productImage : './img/food_2.jpg',
+        productPrice : 30000
+    },
+    {
+        productName : 'Food3',
+        productImage : './img/food_3.png',
+        productPrice : 30000
+    },
+    {
+        productName : 'Food4',
+        productImage : './img/food_4.png',
+        productPrice : 30000
+    },
+    {
+        productName : 'Chocolate Pancake',
+        productImage : './img/food_5.png',
+        productPrice : 30000
+    },
+    {
+        productName : 'Food6',
+        productImage : './img/food_6.png',
+        productPrice : 30000
+    },
+    {
+        productName : 'Food7',
+        productImage : './img/food_7.png',
+        productPrice : 30000
+    },
+    {
+        productName : 'Food8',
+        productImage : './img/food_8.png',
+        productPrice : 30000
+    },
+    {
+        productName : 'Food9',
+        productImage : './img/food_9.png',
+        productPrice : 30000
+    }
+]
 
-function addOrder(){
+
+function displayFoods(){
+    let menu = document.getElementById('menu')
+    availableFoods.forEach(food=>{
+        menu.innerHTML += `
+        <div class="food">
+          <img src="${food.productImage}" alt="food" class="foodImage"/>
+          <div class="foodDetail">
+            <p class="foodName">${food.productName}</p>
+            <p class="foodPrice">#${food.productPrice}</p>
+            <button class="cartButton" id="cartButton" onclick="addOrder(event)" >Add to Cart</button>
+          </div>
+        `
+    })
+}
+
+
+let selectedFoodList = []
+
+
+function addOrder(event){
+    let button = event.target
+    let selectedFooditem = button.parentElement.parentElement
+    let selectedFoodImage = selectedFooditem.querySelector('.foodImage').getAttribute('src')
+    let selectedFoodName = selectedFooditem.querySelector('.foodName').innerText
+    let selectedFoodPrice = selectedFooditem.querySelector('.foodPrice').innerText
+
+    console.log(selectedFoodPrice)
+
+    let selectedFood = {
+        selectedFoodImage,
+        selectedFoodName,
+        selectedFoodPrice
+    }
+    selectedFoodList.push(selectedFood)
     let orderCount = document.getElementById('orderCount')
-    currentCount = JSON.parse(localStorage.getItem('currentCount'))
-    currentCount+=1
-    orderCount.innerText = currentCount
-    localStorage.setItem('currentCount', currentCount)
+    orderCount.innerText = selectedFoodList.length
+    displaySelectedOrder()
+   
+     
 }
 
 function displayOrder(){
-    let listedOrder = document.getElementById('listedOrder')
-    listedOrder.style.display = "block"
+    let orders = document.getElementById('orders')
+    orders.style.display = "block"
+    displaySelectedOrder()
+    
 }
 
 function hideOrder(){
-    let listedOrder = document.getElementById('listedOrder')
-    listedOrder.style.display = "none"
+    let orders = document.getElementById('orders')
+    orders.style.display = "none"
 }
 
 window.addEventListener('load', ()=>{
@@ -283,30 +365,34 @@ window.addEventListener('load', ()=>{
     else{
         displayMenu()
     }
-
-    currentCount = localStorage.getItem('currentCount')
-    let orderCount = document.getElementById('orderCount')
-    orderCount.innerText = currentCount
-
+    displayFoods() 
 }
 ) 
 
 
-// function displaySelectedOrder(){
-//      let listedOrder = document.getElementById('listedOrder')
-//      listedOrder.innerHTML += `<div class="selectedOrder">
-//                             <img src="${}" alt="food">
-//                             <div>
-//                             <p class="productName" id="productName">${}</p>
-//                             <p class="productPrice" id="productPrice">${}</p>
-//                             <div class="orderStatus">
-//                                 <i class="fa-solid fa-plus increaseOrder"></i>
-//                                 <span class="orderMade">1</span>
-//                                 <i class="fa-solid fa-minus decreaseOrder"></i>
-//                             </div>
-//                             </div>
-//                         </div>`
-// }
+
+function displaySelectedOrder(){
+    let noOrder = document.querySelector('.noOrder')
+    if(selectedFoodList.length != 0){
+        noOrder.style.display = "none"
+    }
+    selectedFoodList.forEach(food =>{
+    let listedOrder = document.getElementById('listedOrder')
+        listedOrder.innerHTML += `<div class="selectedOrder">
+        <img src="${food.selectedFoodImage}" alt="food">
+        <div>
+        <p class="productName" id="productName">${food.selectedFoodName}</p>
+        <p class="productPrice" id="productPrice">${food.selectedFoodPrice}</p>
+        <div class="orderStatus">
+            <i class="fa-solid fa-plus increaseOrder"></i>
+            <span class="orderMade">1</span>
+            <i class="fa-solid fa-minus decreaseOrder"></i>
+        </div>
+        </div>
+    </div>`
+    })
+
+}
 
 
 

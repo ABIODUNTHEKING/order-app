@@ -136,19 +136,20 @@ h2{
     cursor: pointer;
 }
 
-/*ORDER
+/*MENU
 ----------------------------------------------------------*/
 
-.order{
+.menu{
     display: none;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 50px;
     margin-top: 30px;
     height: 84vh;
     overflow: scroll;
+    /* width: 80vw; */
 }
 
-.order::-webkit-scrollbar{
+.menu::-webkit-scrollbar{
     display: none;
 }
 
@@ -211,26 +212,35 @@ h2{
     color: white;
 }
 
-.listedOrder{
+.orders{
+    display: none;
     position: absolute;
     top: 0;
     right: 0;
-    width: 25vw;
+    width: 30vw;
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     height: 100vh;
+    overflow: scroll;
+    padding: 10px;
+}
+
+.orders::-webkit-scrollbar{
     display: none;
 }
+
 
 .cancel{
     font-size: 15px;
     color: #384d50;
     border-radius: 50%;
-    border: 1px solid #384d50;
-    padding: 5px;
-    margin-top: 10px;
-    margin-left: 10px;
+    padding: 10px;
     cursor: pointer;
+}
+
+.cancel:hover{
+    background-color: #384d5048;
+    border: 1px solid #384d50;
 }
 
 .selectedOrder{
@@ -239,22 +249,38 @@ h2{
     margin-top: 10px;
     padding: 10px;
     gap: 20px;
-    background-color: #384d502f;
+
+}
+
+.selectedOrder div{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center;
+    grid-gap: 10px;
 
 }
 
 .selectedOrder p{
     font-weight: bold;
-    font-size: 20px;
+    font-size: 15px;
     color: #384d50;
     text-transform: uppercase;
 }
 
 .selectedOrder img{
-    width: 80px;
-    height: 80px;
+    width: 90px;
+    height: 90px;
 
 }
+
+.orderHead{
+    display: flex;
+    height: 10vh;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
 
 .orderStatus{
     margin-top: 7px;
@@ -267,6 +293,29 @@ h2{
     background-color: #384d503a;
     padding: 3px 5px;
     font-size: 20px;
+}
+
+.acceptOrder{
+    border-top: 1px solid #384d50;
+    font-size: 20px;
+    color: #384d50;
+}
+
+.totalPrice{
+    float: right;
+}
+
+.buy{
+    display: block;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 10px 50px;
+    border-radius: 10px;
+    border: 2px solid white;
+    background-color: #384d50;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
 }
 
 

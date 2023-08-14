@@ -24,7 +24,7 @@
             <p
               class="nav-link first-link"
               id="first-link"
-              onclick="displayAccount()" 
+              onclick="displayAccount(), hideOrder()" 
             >
               <i class="fa-solid fa-user"></i> Profile
             </p>
@@ -46,9 +46,9 @@
                 </div>
                 <div class="userInfo">
                     <ul>
-                    <li class="orderCart" id="orderCart" onclick="displayOrder()">
+                    <li class="orderCart" id="orderCart" onclick="displayOrder()" >
                         <i class="fa-solid fa-cart-shopping cart"></i>
-                        <span class="orderCount" id="orderCount"></span>
+                        <span class="orderCount" id="orderCount">0</span>
                     </li>
                     <li class="userImage">
                         <img
@@ -68,84 +68,27 @@
         <button>Get Account Info</button>
       </section>
 
-      <section class="order" id="order">
-        <div class="food">
-          <img src="./img/food.jpg" alt="food" />
-          <div class="foodDetail">
-            <p>Steak</p>
-            <p class="foodPrice">#30,000</p>
-            <button class="cartButton" onclick="addOrder()">Add To Cart</button>
-          </div>
-        </div>
-        <div class="food">
-          <img src="./img/food_2.jpg" alt="food" />
-          <div class="foodDetail">
-            <p>Steak</p>
-            <p class="foodPrice">#30,000</p>
-            <button class="cartButton" onclick="addOrder()">Add To Cart</button>
-          </div>
-        </div>
-        <div class="food">
-          <img src="./img/food_3.png" alt="food" />
-          <div class="foodDetail">
-            <p>Steak</p>
-            <p class="foodPrice">#30,000</p>
-            <button class="cartButton" onclick="addOrder()">Add To Cart</button>
-          </div>
-        </div>
-        <div class="food">
-          <img src="./img/food_4.png" alt="food" />
-          <div class="foodDetail">
-            <p>Steak</p>
-            <p class="foodPrice">#30,000</p>
-            <button class="cartButton" onclick="addOrder()">Add To Cart</button>
-          </div>
-        </div>
-        <div class="food">
-          <img src="./img/food_5.png" alt="food" />
-          <div class="foodDetail">
-            <p>Steak</p>
-            <p class="foodPrice">#30,000</p>
-            <button class="cartButton" onclick="addOrder()">Add To Cart</button>
-          </div>
-        </div>
-        <div class="food">
-          <img src="./img/food_6.png" alt="food" />
-          <div class="foodDetail">
-            <p>Steak</p>
-            <p class="foodPrice">#30,000</p>
-            <button class="cartButton" onclick="addOrder()">Add To Cart</button>
-          </div>
-        </div>
-        <div class="food">
-          <img src="./img/food_7.png" alt="food" />
-          <div class="foodDetail">
-            <p>Steak</p>
-            <p class="foodPrice">#30,000</p>
-            <button class="cartButton" onclick="addOrder()">Add To Cart</button>
-          </div>
-        </div>
-        <div class="food">
-          <img src="./img/food_8.png" alt="food" />
-          <div class="foodDetail">
-            <p>Steak</p>
-            <p class="foodPrice">#30,000</p>
-            <button class="cartButton" onclick="addOrder()">Add To Cart</button>
-          </div>
-        </div>
-        <div class="food">
-          <img src="./img/food_9.png" alt="food" />
-          <div class="foodDetail">
-            <p>Steak</p>
-            <p class="foodPrice">#30,000</p>
-            <button class="cartButton" onclick="addOrder()">Add To Cart</button>
-          </div>
-        </div>
+      <section class="menu" id="menu" >
+    
       </section>
 
-      <section id="listedOrder" class="listedOrder">
-        <i class="fa-solid fa-xmark cancel" onclick="hideOrder()"></i>
-        
+      <section class="orders" id="orders">
+        <div class="orderHead">
+          <h2 class="cartTitle">CART</h2>
+          <i class="fa-solid fa-xmark cancel" onclick="hideOrder()"></i>
+        </div>
+
+        <div id="listedOrder" class="listedOrder">
+          <p class="noOrder">You have not made any order yet</p>
+        </div>
+
+        <div class="acceptOrder">
+          <p class="totalPrice">Total: $0</p>
+          <button class="buy">Buy </button> 
+        </div>
+       
+
+    
       </section>
 
     </main>
