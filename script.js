@@ -5,21 +5,6 @@ let usersDataBase = JSON.parse(localStorage.getItem('usersDataBase')) || []
 let form = document.getElementById('form')
 
 
-window.addEventListener('load', ()=>{
-    currentPage = localStorage.getItem('account')
-    if(currentPage == "account"){
-        displayAccount()   
-    }
-    
-    else{
-        displayOrder()
-      
-    }
-}
-) 
-
-
-
 //FUNCTIONS
 function viewPassword(element1, element2){
     storedElement1 = element1
@@ -231,7 +216,6 @@ function login(event){
     
 }
 
-
 let firstLink = document.getElementById('first-link')
 let secondLink = document.getElementById('second-link')
 let order = document.getElementById('order')
@@ -261,9 +245,23 @@ function displayAccount(){
     pageTitle.innerText = "ACCOUNT"
 }
 
+window.addEventListener('load', ()=>{
+    currentPage = localStorage.getItem('currentPage')
+    if(currentPage == "account"){
+        displayAccount()   
+    }
+    
+    else{
+        displayOrder()
+        console.log('I THINK IT IS CORRECT')
+    }
+}
+) 
 
 
 function hideDashBoard(){
+    console.log('MD')
+    console.log(header)
     header.classList.toggle('hidden')
 }
 
