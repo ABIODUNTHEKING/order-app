@@ -113,38 +113,108 @@ h2{
     gap: 30px;
 }
 
-/* ACCOUNT
+/*MENU
 ----------------------------------------------------------*/
 
-.account{
+.menu{
+
     height: 92vh;
-    display: block;
 }
 
-.accountInfo{
-    height: 82vh;
-}
-
-
-.accountButtons{
+.orderButtons{
     display: flex;
-    height: 10vh;
+    height: 12vh;
     width: 100%;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    top: 0;
+    padding: 30px ;
 }
 
-
-.accountButtons button{
-    width: 10%;
+.orderButtons button{
+    width: 30%;
     padding: 20px;
     border-radius: 10px;
     border: 2px solid #384d50;
     background-color: white;
     color: #384d50;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     cursor: pointer;
 }
+
+.order{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 80vh;
+    overflow: scroll;
+    grid-gap: 20px;
+    padding: 30px;
+    margin-top: 10px;
+}
+
+.order::-webkit-scrollbar{
+    display: none;
+}
+
+.food{
+    background-color: rgba(212, 217, 221, 0.692);
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    width: 350px;
+}
+
+
+.food img{
+    width: 255px;
+    height: 250px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.foodDetail{
+    text-align: center;
+    margin: 10px 0;
+    color: #384d50;
+}
+
+.foodDetail p{
+    margin: 5px 0;
+    font-size: 20px;
+}
+
+.foodPrice{
+    color: #384d50;
+    width: 100px;
+    font-size: 10px;
+    position: absolute;
+    top: 10px;
+    left: 40px;
+    font-weight: bold;
+    background-color: rgb(183, 196, 207);
+    border-radius: 10px;
+}
+
+.editButton{
+    background-color: #384d5041;
+}
+
+.deleteButton{
+    background-color: rgba(255, 0, 0, 0.61);
+    color: white;
+}
+
+.editButton, .deleteButton{
+    padding: 7px 10px;
+    border: 1px solid white;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+
 
 .hidden{
     display: none;

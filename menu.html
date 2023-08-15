@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="widp=device-widp, initial-scale=1.0" />
     <title>Dashboard</title>
-    <link rel="stylesheet" href="/dashboard.css" />
+    <link rel="stylesheet" href="./menu.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -12,34 +12,38 @@
   </head>
   <body>
     <header id="header">
-
-      <img src="/img/logo.jpeg" alt="logo" class="logo" onclick="dashboardPage()"/>
+      <img
+        src="/img/logo.jpeg"
+        alt="logo"
+        class="logo"
+        onclick="pageReload()"
+      />
       <nav>
         <ul>
-
           <li>
-            <p class="nav-link first-link" id="first-link">
-            <i class="fa-solid fa-user"></i> Profile
+            <p
+              class="nav-link "
+              onclick="dashboardPage()" 
+            >
+              <i class="fa-solid fa-user"></i> Profile
             </p>
           </li>
-
           <li>
-            <p class="nav-link" id="second-link" onclick="menuPage()">
-            <i class="fa-solid fa-cart-shopping"></i> Menu
+            <p class="nav-link first-link" id="first-link" onclick="">
+              <i class="fa-solid fa-cart-shopping"></i> Menu
             </p>
           </li>
-
         </ul>
       </nav>
-
     </header>
+
 
     <main id="main">
         <section class="profile">
             <div class="profileInfo">
                 <div class="display">
                     <i class="fa-solid fa-bars bar" id="bar" onclick="hideDashBoard()"></i>
-                    <h2 id="page-title">ACCOUNT</h2>
+                    <h2 id="page-title">MENU</h2>
                 </div>
                 <div class="userInfo">
                     <ul>
@@ -59,15 +63,17 @@
             </div>
         </section>
 
-      <section class="account" id="account">
-        <div class="accountInfo">
-
+      <section class="menu" id="menu">
+        <div class="orderButtons">
+        <button>Create Order</button>
+        <button>Delete Account</button>
+        <button>Get Account Info</button>
         </div>
-        <div class="accountButtons">
-          <button>Edit Account</button>
-          <button>Delete Account</button>
+
+        <div class="order" id="order">
         </div>
       </section>
+
     </main>
     <script src="./script.js"></script>
   </body>

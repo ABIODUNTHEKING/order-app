@@ -7,6 +7,9 @@ let form = document.getElementById('form')
 
 
 //FUNCTIONS
+
+//REGISTER AND LOGIN PAGE
+//HIDE AND REVEAL USER PASSWORD
 function viewPassword(element1, element2){
     storedElement1 = element1
     storedElement2 = element2
@@ -25,6 +28,10 @@ function unviewPassword(element1, element2){
     element2.setAttribute('onclick', `viewPassword('${storedElement1}', '${storedElement2}')`)
 }
 
+
+
+//REGISTER PAGE
+//VALIDATE AND CREATE NEW USERS
 function validateInput(event){
     event.preventDefault()
     let userEmail = document.getElementById('email').value
@@ -82,14 +89,8 @@ function validateInput(event){
         passwordError.style.display = "block"
        passwordError.style.marginTop = "5px"
        passwordError.innerText = "Password is not strong enough"
-    }
-    // else if(!userPassword.includes(/^[a-zA-Z0-9]+$/)){
-    //     console.log('E DON SUP')
-    //     passwordError.style.display = "block"
-    //    passwordError.style.marginTop = "5px"
-    //    passwordError.innerText = "Password should include a number and alphabet"
-    //    event.preventDefault()
-    // }
+    } 
+
     else{
         passwordError.style.display = "none"
     }
@@ -117,6 +118,7 @@ function validateInput(event){
 
 }
 
+//ADD NEW USER TO THE DATABASE
 function registerUser(event){
     event.preventDefault()
     let userEmail = document.getElementById('email').value
@@ -161,6 +163,7 @@ function registerUser(event){
     }
 }
 
+//CHECK YOUR INFORMATION IF IT IS AVAILABLE ON THE DATA BASE
 function login(event){
     event.preventDefault()
     let userEmail0rPhone = document.getElementById('email-or-phone').value
@@ -217,91 +220,39 @@ function login(event){
     
 }
 
-let firstLink = document.getElementById('first-link')
-let secondLink = document.getElementById('second-link')
-let menu = document.getElementById('menu')
-let account = document.getElementById('account')
-let header = document.getElementById('header')
-let pageTitle = document.getElementById('page-title') 
-
-
-function displayMenu(){
-    localStorage.getItem('currentPage')
-    localStorage.setItem('currentPage', 'menu')
-    menu.style.display = "grid"
-    account.style.display = "none"
-    secondLink.classList.add('first-link')
-    firstLink.classList.remove('first-link')
-    pageTitle.innerText = "MENU" 
-}
-
-function displayAccount(){
-    localStorage.getItem('currentPage')
-    localStorage.setItem('currentPage', 'account')
-    firstLink.classList.add('first-link')
-    secondLink.classList.remove('first-link')
-    menu.style.display = "none"
-    account.style.display = "flex"
-    pageTitle.innerText = "ACCOUNT"
-}
-
 function hideDashBoard(){
     header.classList.toggle('hidden')
+    let main = document.getElementById('main')
+    main.classList.toggle('width')
 }
 
-function pageReload(){
+
+function menuPage(){
+    window.location.assign("./menu.html")
+}
+
+function dashboardPage(){
     window.location.assign("./dashboard.html")
 }
 
+let availableFoods = []
 
-let availableFoods = [
-    {
-        productName : 'Stake',
-        productImage : './img/food.jpg',
-        productPrice : 30000
-    },
-    {
-        productName : 'Vegetable Salad',
-        productImage : './img/food_2.jpg',
-        productPrice : 30000
-    },
-    {
-        productName : 'Food3',
-        productImage : './img/food_3.png',
-        productPrice : 30000
-    },
-    {
-        productName : 'Food4',
-        productImage : './img/food_4.png',
-        productPrice : 30000
-    },
-    {
-        productName : 'Chocolate Pancake',
-        productImage : './img/food_5.png',
-        productPrice : 30000
-    },
-    {
-        productName : 'Food6',
-        productImage : './img/food_6.png',
-        productPrice : 30000
-    },
-    {
-        productName : 'Food7',
-        productImage : './img/food_7.png',
-        productPrice : 30000
-    },
-    {
-        productName : 'Food8',
-        productImage : './img/food_8.png',
-        productPrice : 30000
-    },
-    {
-        productName : 'Food9',
-        productImage : './img/food_9.png',
-        productPrice : 30000
-    }
-]
+// let userOrders = {
+//     productName 
+// }
 
+
+function createorder(userOrders){
+        let orderDetail = {
+            productName : userOrders.productName == undefined ||  userOrders.productName == "" || typeof userOrders.productName == Number? alert('Put in a valid product name so we can accept your order') : userOrders.productName,
+            productId : orderDataBase.length + 1,
+            productPrice : typeof userOrders.productPrice == String ? alert('Put in a valid price') : userOrders.productPrice,
+            eta : timeOfArrival,
+            userId: userOrders.userId == undefined || userOrders.userId == "" ? console.log('Put in a valid user ID so we can accept your order') : userOrders.userId,
+            productStatus : 'Pending'
+        }
+        availableFoods.push(orderDetail)
+}
 
 function displayFoods(){
     let menu = document.getElementById('menu')
@@ -312,93 +263,11 @@ function displayFoods(){
           <div class="foodDetail">
             <p class="foodName">${food.productName}</p>
             <p class="foodPrice">#${food.productPrice}</p>
-            <button class="cartButton" id="cartButton" onclick="addOrder(event)" >Add to Cart</button>
+            <div>
+                <button class="deleteButton" id="deleteButton" onclick="deleteOrder(event)">Delete Order</button>
+                <button class="editButton">Edit Button</button> 
+            </div>
           </div>
         `
     })
 }
-
-
-let selectedFoodList = []
-
-
-function addOrder(event){
-    let button = event.target
-    let selectedFooditem = button.parentElement.parentElement
-    let selectedFoodImage = selectedFooditem.querySelector('.foodImage').getAttribute('src')
-    let selectedFoodName = selectedFooditem.querySelector('.foodName').innerText
-    let selectedFoodPrice = selectedFooditem.querySelector('.foodPrice').innerText
-
-    console.log(selectedFoodPrice)
-
-    let selectedFood = {
-        selectedFoodImage,
-        selectedFoodName,
-        selectedFoodPrice
-    }
-    selectedFoodList.push(selectedFood)
-    let orderCount = document.getElementById('orderCount')
-    orderCount.innerText = selectedFoodList.length
-    displaySelectedOrder()
-   
-     
-}
-
-function displayOrder(){
-    let orders = document.getElementById('orders')
-    orders.style.display = "block"
-    displaySelectedOrder()
-    
-}
-
-function hideOrder(){
-    let orders = document.getElementById('orders')
-    orders.style.display = "none"
-}
-
-window.addEventListener('load', ()=>{
-    currentPage = localStorage.getItem('currentPage')
-    if(currentPage == "account"){
-        displayAccount()   
-    }
-    
-    else{
-        displayMenu()
-    }
-    displayFoods() 
-}
-) 
-
-
-
-function displaySelectedOrder(){
-    let noOrder = document.querySelector('.noOrder')
-    if(selectedFoodList.length != 0){
-        noOrder.style.display = "none"
-    }
-    selectedFoodList.forEach(food =>{
-    let listedOrder = document.getElementById('listedOrder')
-        listedOrder.innerHTML += `<div class="selectedOrder">
-        <img src="${food.selectedFoodImage}" alt="food">
-        <div>
-        <p class="productName" id="productName">${food.selectedFoodName}</p>
-        <p class="productPrice" id="productPrice">${food.selectedFoodPrice}</p>
-        <div class="orderStatus">
-            <i class="fa-solid fa-plus increaseOrder"></i>
-            <span class="orderMade">1</span>
-            <i class="fa-solid fa-minus decreaseOrder"></i>
-        </div>
-        </div>
-    </div>`
-    })
-
-}
-
-
-
-
-
-
-
-
-
