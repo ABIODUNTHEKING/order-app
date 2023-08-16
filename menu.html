@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="widp=device-widp, initial-scale=1.0" />
-    <title>Dashboard</title>
+    <title>MENU</title>
     <link rel="stylesheet" href="./menu.css" />
     <link
       rel="stylesheet"
@@ -64,17 +64,82 @@
         </section>
 
       <section class="menu" id="menu">
-        <div class="orderButtons">
-        <button>Create Order</button>
-        <button>Delete Account</button>
-        <button>Get Account Info</button>
+            <div class="food">
+                <img src="./img/food_9.png" alt="food" class="foodImage"/>
+                <div class="foodDetail">
+                    <p class="foodName">NIGERIAN DISH</p>
+                    <p class="foodPrice">#3000</p>
+                    <button class="createButton" id="createButton" onclick="createOrder(event)">Create Order</button>
+                </div>
+            </div>
+            <div class="food">
+                <img src="./img/food_8.png" alt="food" class="foodImage"/>
+                <div class="foodDetail">
+                    <p class="foodName">AMERICAN DISH</p>
+                    <p class="foodPrice">#5000</p>
+                    <button class="createButton" id="createButton" onclick="createOrder(event)">Create Order</button>
+                </div>
+            </div>
+            <div class="food">
+                <img src="./img/food_3.png" alt="food" class="foodImage"/>
+                <div class="foodDetail">
+                    <p class="foodName">FRENCH DISH</p>
+                    <p class="foodPrice">#3000</p>
+                    <button class="createButton" id="createButton" onclick="createOrder(event)">Create Order</button>
+                </div>
+            </div>
+            <div class="food">
+                <img src="./img/food_4.png" alt="food" class="foodImage"/>
+                <div class="foodDetail">
+                    <p class="foodName">INDIAN DISH</p>
+                    <p class="foodPrice">#3000</p>
+                    <button class="createButton" id="createButton" onclick="createOrder(event)">Create Order</button>
+                </div>
+            </div>
+            <div class="food">
+                <img src="./img/food_5.png" alt="food" class="foodImage"/>
+                <div class="foodDetail">
+                    <p class="foodName">KOREAN DISH</p>
+                    <p class="foodPrice">#3000</p>
+                    <button class="createButton" id="createButton" onclick="createOrder(event)">Create Order</button>
+                </div>
+            </div>
+            <div class="food">
+                <img src="./img/food_6.png" alt="food" class="foodImage"/>
+                <div class="foodDetail">
+                    <p class="foodName">GHANIAN DISH</p>
+                    <p class="foodPrice">#3000</p>
+                    <button class="createButton" id="createButton" onclick="createOrder(event)">Create Order</button>
+                </div>
+            </div>
+            <div class="food">
+                <img src="./img/food_7.png" alt="food" class="foodImage"/>
+                <div class="foodDetail">
+                    <p class="foodName">ITALIAN DISH</p>
+                    <p class="foodPrice">#3000</p>
+                    <button class="createButton" id="createButton" onclick="createOrder(event)">Create Order</button>
+                </div>
+            </div>
+      </section>
+
+      <section class="orders" id="orders">
+        <div class="orderHead">
+          <h2 class="cartTitle">CART</h2>
+          <i class="fa-solid fa-xmark cancel" onclick="hideOrder()"></i>
         </div>
 
-        <div class="order" id="order">
+        <div id="listedOrder" class="listedOrder">
+          <p class="noOrder">You have not made any order yet</p>
         </div>
+
+        <div class="acceptOrder">
+          <p class="totalPrice" id="totalPrice">Total: $0</p>
+        </div>
+    
       </section>
 
     </main>
     <script src="./script.js"></script>
+    <script src="./orders.js"></script>
   </body>
 </html>

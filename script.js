@@ -4,11 +4,9 @@ let storedElement2
 let usersDataBase = JSON.parse(localStorage.getItem('usersDataBase')) || []
 let form = document.getElementById('form')
 
-
-
 //FUNCTIONS
 
-//REGISTER AND LOGIN PAGE
+
 //HIDE AND REVEAL USER PASSWORD
 function viewPassword(element1, element2){
     storedElement1 = element1
@@ -65,7 +63,7 @@ function validateInput(event){
         phoneError.style.display = "block"
         phoneError.innerText = "Enter in your phone number"
     }
-    else if(userPhoneNo.length > 15 || userPhoneNo.length < 10){
+    else if(userPhoneNo.length != 11){
         phoneError.style.display = "block"
         phoneError.innerText = "Enter in a valid phone number"
     }
@@ -128,11 +126,13 @@ function registerUser(event){
     
 
     let newUserInfo = {
-        id: usersDataBase.length + 1,
         userEmail,
         userPhoneNo,
-        userPassword
+        userPassword,
+        order : []
     }
+
+    localStorage.setItem('currentUser', JSON.stringify(newUserInfo))
     
     if(usersDataBase.length == 0){
         usersDataBase.push(newUserInfo)
@@ -177,7 +177,8 @@ function login(event){
         let currentUser = {
             userEmail : 'admin',
             userPassword : 'admin',
-            userPhoneNo : 'admin'
+            userPhoneNo : 'admin',
+            order : []
         } 
         localStorage.setItem('currentUser', JSON.stringify(currentUser))
         window.location.assign("./dashboard.html")
@@ -235,39 +236,5 @@ function dashboardPage(){
     window.location.assign("./dashboard.html")
 }
 
-let availableFoods = []
-
-// let userOrders = {
-//     productName 
-// }
 
 
-function createorder(userOrders){
-        let orderDetail = {
-            productName : userOrders.productName == undefined ||  userOrders.productName == "" || typeof userOrders.productName == Number? alert('Put in a valid product name so we can accept your order') : userOrders.productName,
-            productId : orderDataBase.length + 1,
-            productPrice : typeof userOrders.productPrice == String ? alert('Put in a valid price') : userOrders.productPrice,
-            eta : timeOfArrival,
-            userId: userOrders.userId == undefined || userOrders.userId == "" ? console.log('Put in a valid user ID so we can accept your order') : userOrders.userId,
-            productStatus : 'Pending'
-        }
-        availableFoods.push(orderDetail)
-}
-
-function displayFoods(){
-    let menu = document.getElementById('menu')
-    availableFoods.forEach(food=>{
-        menu.innerHTML += `
-        <div class="food">
-          <img src="${food.productImage}" alt="food" class="foodImage"/>
-          <div class="foodDetail">
-            <p class="foodName">${food.productName}</p>
-            <p class="foodPrice">#${food.productPrice}</p>
-            <div>
-                <button class="deleteButton" id="deleteButton" onclick="deleteOrder(event)">Delete Order</button>
-                <button class="editButton">Edit Button</button> 
-            </div>
-          </div>
-        `
-    })
-}

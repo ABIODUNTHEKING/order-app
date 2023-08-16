@@ -119,30 +119,6 @@ h2{
 .menu{
 
     height: 92vh;
-}
-
-.orderButtons{
-    display: flex;
-    height: 12vh;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    padding: 30px ;
-}
-
-.orderButtons button{
-    width: 30%;
-    padding: 20px;
-    border-radius: 10px;
-    border: 2px solid #384d50;
-    background-color: white;
-    color: #384d50;
-    cursor: pointer;
-}
-
-.order{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     height: 80vh;
@@ -152,7 +128,8 @@ h2{
     margin-top: 10px;
 }
 
-.order::-webkit-scrollbar{
+
+.menu::-webkit-scrollbar{
     display: none;
 }
 
@@ -162,6 +139,7 @@ h2{
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     width: 350px;
+    position: relative;
 }
 
 
@@ -190,31 +168,141 @@ h2{
     font-size: 10px;
     position: absolute;
     top: 10px;
-    left: 40px;
+    left: 30px;
     font-weight: bold;
     background-color: rgb(183, 196, 207);
     border-radius: 10px;
 }
 
-.editButton{
-    background-color: #384d5041;
-}
 
-.deleteButton{
-    background-color: rgba(255, 0, 0, 0.61);
-    color: white;
-}
-
-.editButton, .deleteButton{
+.createButton{
+    background-color: white;
+    color: #384d50;
     padding: 7px 10px;
-    border: 1px solid white;
+    border: 2px solid #384d50;
     border-radius: 6px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     cursor: pointer;
     transition: 0.5s;
 }
 
+/*ORDERS
+-----------------------------------------------------*/
+.orders{
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30vw;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    height: 100vh;
+    overflow: scroll;
+    padding: 10px;
+}
 
+.orders::-webkit-scrollbar{
+    display: none;
+}
+
+
+.cancel{
+    font-size: 15px;
+    color: #384d50;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.cancel:hover{
+    background-color: #384d5048;
+    border: 1px solid #384d50;
+}
+
+.selectedOrder{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    padding: 10px;
+    gap: 20px;
+
+}
+
+.selectedOrder div{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    place-items: center;
+    width: 100%;
+    grid-gap: 10px;
+}
+
+.food{
+    max-width: 300px;
+}
+
+.productName, .productPrice{
+    font-weight: bold;
+    font-size: 15px;
+    color: #384d50;
+}
+
+.selectedOrder img{
+    width: 90px;
+    height: 90px;
+
+}
+
+.orderHead{
+    display: flex;
+    height: 10vh;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+
+.orderStatus{
+    /* margin-top: 7px;
+    padding: 5px 10px; */
+    color: rgb(255, 251, 0);
+    background-color: #384d507c;
+    padding: 3px 10px;
+}
+
+
+.orderMade{
+    background-color: #384d503a;
+    padding: 3px 5px;
+}
+
+.acceptOrder{
+    border-top: 1px solid #384d50;
+    font-size: 20px;
+    color: #384d50;
+}
+
+.totalPrice{
+    float: right;
+    padding: 10px 0;
+}
+
+.trash{
+    color: rgba(255, 0, 0, 0.521);
+    cursor: pointer;
+}
+
+/* .buyButton{
+    display: block;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 10px 50px;
+    border-radius: 10px;
+    border: 2px solid white;
+    background-color: #384d50;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
+} */
 
 .hidden{
     display: none;
@@ -223,3 +311,5 @@ h2{
 .width{
     width: 100%;
 }
+
+

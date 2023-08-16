@@ -117,12 +117,12 @@ h2{
 ----------------------------------------------------------*/
 
 .account{
-    height: 92vh;
+    height: 89vh;
     display: block;
 }
 
 .accountInfo{
-    height: 82vh;
+    height: 78vh;
 }
 
 
@@ -135,15 +135,20 @@ h2{
 }
 
 
-.accountButtons button{
-    width: 10%;
+.deleteButton, .editButton{
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 5px;
     border: 2px solid #384d50;
     background-color: white;
     color: #384d50;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     cursor: pointer;
+}
+
+.deleteButton{
+    background-color: rgba(255, 0, 0, 0.836);
+    color: white;
+    border: 2px solid white;
 }
 
 .hidden{
